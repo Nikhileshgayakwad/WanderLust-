@@ -1,0 +1,157 @@
+<% layout("layouts/boilerplates") -%>
+
+<div class="row">
+    <div class="col-8 offset-2">
+
+        <h3>Edit Listing:</h3>
+
+        <form
+            method="POST"
+            action="/listings/<%= listing._id %>?_method=PUT"
+            novalidate
+            class="needs-validation"
+            enctype="multipart/form-data"
+        >
+
+            <!-- TITLE -->
+            <div class="mb-3">
+
+                <label for="title" class="form-label">
+                    Title
+                </label>
+
+                <input
+                    type="text"
+                    name="listing[title]"
+                    value="<%= listing.title %>"
+                    class="form-control"
+                    id="title"
+                    required
+                >
+
+            </div>
+
+
+            <!-- DESCRIPTION -->
+            <div class="mb-3">
+
+                <label for="description" class="form-label">
+                    Description
+                </label>
+
+                <textarea
+                    name="listing[description]"
+                    class="form-control"
+                    id="description"
+                    required
+                ><%= listing.description %></textarea>
+
+            </div>
+
+             
+           <!-- CURRENT IMAGE -->
+<div class="mb-3">
+    <label class="form-label">Current Image</label>
+    <br>
+
+    <img
+        src="<%= listing.image.url %>"
+        alt="Current Listing Image"
+        class="img-fluid rounded"
+        style="max-height: 300px;"
+    >
+</div>
+
+            <!-- IMAGE -->
+            <div class="mb-3">
+
+                <label for="image" class="form-label">
+                    Upload New Image
+                </label>
+
+                <input
+                    name="image"
+                    type="file"
+                    class="form-control"
+                    id="image"
+                    accept="image/*"
+                >
+
+                <small class="text-muted">
+                    Leave empty if you don't want to change the image.
+                </small>
+
+            </div>
+
+
+            <div class="row">
+
+                <!-- PRICE -->
+                <div class="mb-3 col-md-4">
+
+                    <label for="price" class="form-label">
+                        Price
+                    </label>
+
+                    <input
+                        name="listing[price]"
+                        value="<%= listing.price %>"
+                        type="number"
+                        class="form-control"
+                        id="price"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- COUNTRY -->
+                <div class="mb-3 col-md-8">
+
+                    <label for="country" class="form-label">
+                        Country
+                    </label>
+
+                    <input
+                        name="listing[country]"
+                        value="<%= listing.country %>"
+                        type="text"
+                        class="form-control"
+                        id="country"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <!-- LOCATION -->
+            <div class="mb-3">
+
+                <label for="location" class="form-label">
+                    Location
+                </label>
+
+                <input
+                    name="listing[location]"
+                    value="<%= listing.location %>"
+                    type="text"
+                    class="form-control"
+                    id="location"
+                    required
+                >
+
+            </div>
+
+
+            <button class="btn btn-dark edit-btn">
+                Edit
+            </button>
+
+        </form>
+
+    </div>
+</div>
+
+<script src="/js/aap.js"></script>
